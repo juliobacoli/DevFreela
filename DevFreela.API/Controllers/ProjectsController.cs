@@ -23,6 +23,7 @@ namespace DevFreela.API.Controllers
         [HttpGet]
         public IActionResult Get(string query)
         {
+            //Buscar todos ou filtrar
             return Ok();
         }
 

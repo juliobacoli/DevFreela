@@ -21,7 +21,7 @@ namespace DevFreela.Core.Entites
             Comments = new List<ProjectComment>();
         }
 
-        public string Title{ get; private set; }
+        public string Title { get; private set; }
         public string Description { get; private set; }
         public int IdClient { get; private set; }
         public int IdFreelancer { get; private set; }
@@ -32,5 +32,10 @@ namespace DevFreela.Core.Entites
         public ProjectStatusEnum Status { get; private set; }
         public List<ProjectComment> Comments { get; private set; }
 
+        public void Cancel()
+        {
+            if (Status ==ProjectStatusEnum.InProgress || Status == ProjectStatusEnum.Created)
+            Status = ProjectStatusEnum.Cancelled;
+        }
     }
 }
