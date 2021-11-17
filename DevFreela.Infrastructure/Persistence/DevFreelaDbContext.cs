@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-
+using System.Reflection;
 
 namespace DevFreela.Infrastructure.Persistence
 {
@@ -21,48 +21,15 @@ namespace DevFreela.Infrastructure.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Project>()
-                .HasKey(p => p.Id);
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); //Add config da classe project configuration
 
-            modelBuilder.Entity<Project>()
-                .HasOne(p => p.Freelancer)
-                .WithMany(f => f.FreelanceProjects)
-                .HasForeignKey(p => p.IdFreelancer)
-                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Project>()
-                .HasOne(p => p.Client)
-                .WithMany(f => f.OwnedProjects)
-                .HasForeignKey(p => p.IdClient)
-                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<User>()
-                .HasKey(p => p.Id);
 
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Skills)
-                .WithOne()
-                .HasForeignKey(u => u.IdSkill)
-                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Skill>()
-                .HasKey(s => s.Id);
 
-            modelBuilder.Entity<UserSkill>()
-                .HasKey(s => s.Id);
 
-            modelBuilder.Entity<ProjectComment>()
-                .HasKey(s => s.Id);
-
-            modelBuilder.Entity<ProjectComment>()
-                .HasOne(p => p.Project)
-                .WithMany(p => p.Comments)
-                .HasForeignKey(p => p.IdProject);
-
-            modelBuilder.Entity<ProjectComment>()
-                .HasOne(p => p.User)
-                .WithMany(p => p.Comments)
-                .HasForeignKey(p => p.IdUser);
+           
         }
 
     }
