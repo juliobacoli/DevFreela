@@ -22,13 +22,6 @@ namespace DevFreela.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); //Add config da classe project configuration
-
-
-
-
-
-
-
            
         }
 
