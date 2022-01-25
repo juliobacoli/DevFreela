@@ -27,16 +27,6 @@ namespace DevFreela.Application.Services.Implementation
             _dbContext.SaveChanges();
         }
 
-        public List<ProjectViewModel> GetAll(string query)
-        {
-            var projects = _dbContext.Projects;
-
-            var projectsViewModel = projects
-                .Select(p => new ProjectViewModel(p.Id,p.Title,p.CreatedAt))
-                .ToList();
-
-            return projectsViewModel;
-        }
 
         public ProjectDetailsViewModel GetById(int id)
         {
