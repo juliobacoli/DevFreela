@@ -1,7 +1,8 @@
 using DevFreela.API.Models;
 using DevFreela.Application.Commands.CreateProject;
-
+using DevFreela.Core.Repositories;
 using DevFreela.Infrastructure.Persistence;
+using DevFreela.Infrastructure.Persistence.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,8 @@ namespace DevFreela.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ISkillRepository, SkillRepository>();
+            services.AddScoped<IProjectRepository, ProjectRepository>();
             services.AddScoped<DevFreelaDbContext>();
 
             var connectionString = Configuration.GetConnectionString("DevFreelaCs");

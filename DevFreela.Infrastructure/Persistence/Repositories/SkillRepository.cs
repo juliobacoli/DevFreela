@@ -18,16 +18,16 @@ namespace DevFreela.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        async Task<List<SkillViewModel>> ISkillRepository.GetAll()
+        async Task<List<SkillDTO>> ISkillRepository.GetAll()
         {
-            return await _dbContext.Skills.ToListAsync()
-            //var skills = _dbContext.Skills;
+            var skills = _dbContext.Skills;
 
-            //var skillsViewModel = skills
-            //    .Select(s => new SkillViewModel(s.Id, s.Description))
-            //    .ToList();
+            var skillsViewModel = skills
+            .Select(s => new SkillDTO { Id = s.Id, Description = s.Description })
+            .ToList();
 
-            //return skillsViewModel;
+            return skillsViewModel;
+
         }
     }
     }
