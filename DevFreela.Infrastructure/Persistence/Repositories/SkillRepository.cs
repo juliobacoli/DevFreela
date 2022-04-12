@@ -18,7 +18,7 @@ namespace DevFreela.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        async Task<List<SkillDTO>> ISkillRepository.GetAll()
+        async Task<List<SkillDTO>> ISkillRepository.GetAllAsync()
         {
             var skills = _dbContext.Skills;
 
