@@ -22,7 +22,11 @@ namespace DevFreela.Application.Commands.StartProject
 
         public async Task<Unit> Handle(StartProjectCommand request, CancellationToken cancellationToken)
         {
-            await _projectRepository.StartAsync(request.Id);
+            var project = await _projectRepository.GetByIdAsync(request.Id);
+            
+            project.Start();
+
+            await _projectRepository.StartAsync(Convert.ToInt32(project));
 
             return Unit.Value;
         }
