@@ -4,6 +4,7 @@ using DevFreela.Application.InputModels;
 using DevFreela.Application.Queries.GetUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace DevFreela.API.Controllers
@@ -12,11 +13,6 @@ namespace DevFreela.API.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
-
-        //public UsersController(IUserService userService)
-        //{
-        //    _userService = userService;
-        //}
 
         // api/users/1
         [HttpGet("{id}")]
@@ -36,6 +32,17 @@ namespace DevFreela.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] CreateUserCommand command)
         {
+            //Caso as validações deem errado, ele irá mostrar as mensagens de erro tratadas na classe [...]VALIDATOR
+            if (!ModelState.IsValid)
+            {
+                var messages = ModelState
+                    .SelectMany(ms => ms.Value.Errors)
+                    .Select(erros => erros.ErrorMessage)
+                    .ToList();
+
+                return BadRequest(messages);
+            }
+
             var id = _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
