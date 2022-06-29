@@ -1,10 +1,8 @@
 ﻿using DevFreela.API.Models;
 using DevFreela.Application.Commands.CreateUser;
-using DevFreela.Application.InputModels;
 using DevFreela.Application.Queries.GetUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace DevFreela.API.Controllers
@@ -32,16 +30,18 @@ namespace DevFreela.API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] CreateUserCommand command)
         {
+            #region EXEMPLO USANDO MODELSTATE
             //Caso as validações deem errado, ele irá mostrar as mensagens de erro tratadas na classe [...]VALIDATOR
-            if (!ModelState.IsValid)
-            {
-                var messages = ModelState
-                    .SelectMany(ms => ms.Value.Errors)
-                    .Select(erros => erros.ErrorMessage)
-                    .ToList();
+            //if (!ModelState.IsValid)
+            //{
+            //    var messages = ModelState
+            //        .SelectMany(ms => ms.Value.Errors)
+            //        .Select(erros => erros.ErrorMessage)
+            //        .ToList();
 
-                return BadRequest(messages);
-            }
+            //    return BadRequest(messages);
+            //}
+            #endregion
 
             var id = _mediator.Send(command);
 
