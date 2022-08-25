@@ -26,7 +26,7 @@ namespace DevFreela.Infrastructure.Auth
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-            //Informação do user na que o token pertence
+            //Claim é a informação de usuário na qual o token pertence
             var claims = new List<Claim>
             {
                 new Claim("userName", email),
