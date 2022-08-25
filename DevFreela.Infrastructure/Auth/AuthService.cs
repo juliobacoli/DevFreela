@@ -33,14 +33,14 @@ namespace DevFreela.Infrastructure.Auth
                 new Claim(ClaimTypes.Role, role)
             };
 
-            var token = new JwtSecurityToken(issuer: issuer, 
+            var securityToken = new JwtSecurityToken(issuer: issuer, 
                 audience:audience, 
                 expires: DateTime.Now.AddHours(2), 
                 signingCredentials: credentials,
                 claims: claims);
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var stringToken = tokenHandler.WriteToken(token);
+            var stringToken = tokenHandler.WriteToken(securityToken);
 
             return stringToken;
         }
