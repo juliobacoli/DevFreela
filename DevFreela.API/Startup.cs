@@ -43,7 +43,9 @@ namespace DevFreela.API
             services.AddScoped<DevFreelaDbContext>();
 
             var connectionString = Configuration.GetConnectionString("DevFreelaCs");
-            services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString));
+            //services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContextPool<DevFreelaDbContext>(
+                    options => options.UseSqlServer(Configuration.GetConnectionString("DevFreelaCs")));
 
             services.AddControllers(options => options.Filters.Add(typeof(ValidatorFilter)))
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateUserCommandValidator>());
