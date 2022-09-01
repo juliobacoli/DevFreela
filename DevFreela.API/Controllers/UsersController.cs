@@ -4,6 +4,7 @@ using DevFreela.Application.Commands.LoginUser;
 using DevFreela.Application.Queries.GetUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace DevFreela.API.Controllers
@@ -12,6 +13,11 @@ namespace DevFreela.API.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IMediator _mediator;
+
+        public UsersController(IMediator mediator)
+        {
+            _mediator = mediator;
+        }
 
         // api/users/1
         [HttpGet("{id}")]
@@ -53,12 +59,24 @@ namespace DevFreela.API.Controllers
         [HttpPut("login")]
         public async Task<IActionResult> Login(int id, [FromBody] LoginUserCommand command)
         {
-            var loginUserViewModel = await _mediator.Send(command);
+            try
+            {
+                var loginUserViewModel = await _mediator.Send(command);
 
-            if (loginUserViewModel == null)
-                return BadRequest();
+                if (loginUserViewModel == null)
+                    throw new Exception();
 
-            return Ok(loginUserViewModel);
+                return Ok(loginUserViewModel);
+
+            }
+            catch (Exception ex)
+            {
+
+                string message = ex.Message;
+
+                return BadRequest(message);
+
+            }
         }
     }
 }
