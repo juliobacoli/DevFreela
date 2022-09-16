@@ -26,6 +26,7 @@ namespace DevFreela.API.Controllers
         public async Task<IActionResult> GetById(int id)
         {
             var query = new GetUserQuery(id);
+
             var user = await _mediator.Send(query);
 
             if (user == null)
@@ -40,19 +41,6 @@ namespace DevFreela.API.Controllers
         [AllowAnonymous]
         public IActionResult Post([FromBody] CreateUserCommand command)
         {
-            #region EXEMPLO USANDO MODELSTATE
-            //Caso as validações deem errado, ele irá mostrar as mensagens de erro tratadas na classe [...]VALIDATOR
-            //if (!ModelState.IsValid)
-            //{
-            //    var messages = ModelState
-            //        .SelectMany(ms => ms.Value.Errors)
-            //        .Select(erros => erros.ErrorMessage)
-            //        .ToList();
-
-            //    return BadRequest(messages);
-            //}
-            #endregion
-
             var id = _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
@@ -63,24 +51,14 @@ namespace DevFreela.API.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(int id, [FromBody] LoginUserCommand command)
         {
-            try
+            var loginUserviewModel = await _mediator.Send(command);
+
+            if (loginUserviewModel == null)
             {
-                var loginUserViewModel = await _mediator.Send(command);
-
-                if (loginUserViewModel == null)
-                    throw new Exception();
-
-                return Ok(loginUserViewModel);
-
+                return BadRequest();
             }
-            catch (Exception ex)
-            {
 
-                string message = ex.Message;
-
-                return BadRequest(message);
-
-            }
+            return Ok(loginUserviewModel);
         }
     }
 }

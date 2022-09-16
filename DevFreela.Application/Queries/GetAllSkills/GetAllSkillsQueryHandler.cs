@@ -1,13 +1,7 @@
-﻿using DevFreela.Application.ViewModels;
-using DevFreela.Core.DTOs;
+﻿using DevFreela.Core.DTOs;
 using DevFreela.Core.Repositories;
-using DevFreela.Infrastructure.Persistence;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 

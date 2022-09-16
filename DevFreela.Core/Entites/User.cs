@@ -17,6 +17,8 @@ namespace DevFreela.Core.Entites
             CreatedAt = DateTime.Now;
             Password = password;
             Role = role;
+
+            Skills = new List<UserSkill>();
             OwnedProjects = new List<Project>();
             FreelanceProjects = new List<Project>();
         }
@@ -28,10 +30,10 @@ namespace DevFreela.Core.Entites
         public bool Active { get; set; }
         public string Role {get; private set;}
         public string Password { get; private set; }
+
         public List<UserSkill> Skills { get; private set; }
         public List<Project> OwnedProjects { get; private set; }
         public List<Project> FreelanceProjects { get; private set; }
         public List<ProjectComment> Comments { get; private set; }
-
     }
 }

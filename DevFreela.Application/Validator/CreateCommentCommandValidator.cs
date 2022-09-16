@@ -15,7 +15,7 @@ namespace DevFreela.Application.Validator
             RuleFor(comment => comment.Content)
                 .MinimumLength(1)
                 .MaximumLength(255)
-                .WithMessage("Seu comentário tem mais caracteres que o permitido");
+                .WithMessage("Seu comentário tem mais caracteres de 255 caracteres");
         }
     }
 }

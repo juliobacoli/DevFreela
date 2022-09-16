@@ -42,8 +42,8 @@ namespace DevFreela.Infrastructure.Auth
         {
             var issuer = _configuration["Jwt:Issuer"];
             var audience = _configuration["Jwt:Audience"];
-            var key = _configuration["Jwt:Key"];
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
+
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             //Claim é a informação de usuário na qual o token pertence
@@ -53,14 +53,14 @@ namespace DevFreela.Infrastructure.Auth
                 new Claim(ClaimTypes.Role, role)
             };
 
-            var securityToken = new JwtSecurityToken(issuer: issuer, 
+            var token = new JwtSecurityToken(issuer: issuer, 
                 audience:audience, 
                 expires: DateTime.Now.AddHours(2), 
                 signingCredentials: credentials,
                 claims: claims);
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var stringToken = tokenHandler.WriteToken(securityToken);
+            var stringToken = tokenHandler.WriteToken(token);
 
             return stringToken;
         }

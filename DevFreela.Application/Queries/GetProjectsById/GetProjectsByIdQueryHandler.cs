@@ -3,10 +3,6 @@ using DevFreela.Core.Repositories;
 using DevFreela.Infrastructure.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,7 +14,7 @@ namespace DevFreela.Application.Queries.GetProjectsById
 
         public GetProjectsByIdQueryHandler(IProjectRepository projectRepository)
         {
-            _projectRepository = _projectRepository;
+            _projectRepository = projectRepository;
         }
 
         public async Task<ProjectDetailsViewModel> Handle(GetProjectsByIdQuery request, CancellationToken cancellationToken)

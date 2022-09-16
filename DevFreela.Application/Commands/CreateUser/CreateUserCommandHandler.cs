@@ -24,8 +24,8 @@ namespace DevFreela.Application.Commands.CreateUser
 
         public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var passwordHas = _authService.ComputeSha256Hash(request.Password);
-            var user = new User(request.FullName, request.Email, request.BirthDate, request.Password, request.Role);
+            var passwordHash = _authService.ComputeSha256Hash(request.Password);
+            var user = new User(request.FullName, request.Email, request.BirthDate, passwordHash, request.Role);
 
             await _dbContext.Users.AddAsync(user);
             await _dbContext.SaveChangesAsync();
