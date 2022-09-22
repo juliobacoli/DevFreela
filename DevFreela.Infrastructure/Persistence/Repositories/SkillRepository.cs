@@ -20,8 +20,8 @@ namespace DevFreela.Infrastructure.Persistence.Repositories
             var skills = _dbContext.Skills;
 
             var skillsViewModel = skills
-            .Select(s => new SkillDTO { Id = s.Id, Description = s.Description })
-            .ToList();
+                .Select(s => new SkillDTO { Id = s.Id, Description = s.Description })
+                .ToList();
 
             return skillsViewModel;
 

@@ -54,18 +54,7 @@ namespace DevFreela.API.Controllers
         [Authorize(Roles = "client")]
         public async Task<IActionResult> Post([FromBody] CreateProjectCommand command)
         {
-            #region EXEMPLO USANDO MODELSTATE
-            //if (!ModelState.IsValid)
-            //{
-            //    var messages = ModelState
-            //        .SelectMany(ms => ms.Value.Errors)
-            //        .Select(erros => erros.ErrorMessage)
-            //        .ToList();
-
-            //    return BadRequest(messages);
-            //}
-            #endregion
-
+            
             var id = await _mediator.Send(command);
 
             return CreatedAtAction(nameof(GetById), new { id = id }, command);
