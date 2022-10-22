@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31605.320
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevFreela.API", "DevFreela.API\DevFreela.API.csproj", "{08171F19-4061-4416-9042-0077E5477C68}"
 EndProject
@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevFreela.Core", "DevFreela
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevFreela.Infrastructure", "DevFreela.Infrastructure\DevFreela.Infrastructure.csproj", "{6CD72D05-680C-4092-A0F6-D44CCDE59C76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevFreela.Application", "DevFreela.Application\DevFreela.Application.csproj", "{AE0AA1D7-3B54-4C86-8E8C-9FD626D99A30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevFreela.Application", "DevFreela.Application\DevFreela.Application.csproj", "{AE0AA1D7-3B54-4C86-8E8C-9FD626D99A30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevFreela.UnitTests", "DevFreela.UnitTests\DevFreela.UnitTests.csproj", "{46B081DB-5414-4668-A6E5-E8C5AED5E37D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{AE0AA1D7-3B54-4C86-8E8C-9FD626D99A30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE0AA1D7-3B54-4C86-8E8C-9FD626D99A30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE0AA1D7-3B54-4C86-8E8C-9FD626D99A30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46B081DB-5414-4668-A6E5-E8C5AED5E37D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46B081DB-5414-4668-A6E5-E8C5AED5E37D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46B081DB-5414-4668-A6E5-E8C5AED5E37D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46B081DB-5414-4668-A6E5-E8C5AED5E37D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
