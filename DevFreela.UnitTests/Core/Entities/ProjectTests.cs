@@ -30,7 +30,7 @@ namespace DevFreela.UnitTests.Core.Entities
 
             //Faz algumas validações DEPOIS do metodo Start
             Assert.Equal(ProjectStatusEnum.InProgress, project.Status); //Verifica se o primeiro status é IGUAL ao status atual do projeto
-            //Assert.NotNull(project.StartedAt);
+            Assert.NotNull(project.StartedAt);
 
         }
     }
