@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevFreela.Infrastructure", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevFreela.Application", "DevFreela.Application\DevFreela.Application.csproj", "{AE0AA1D7-3B54-4C86-8E8C-9FD626D99A30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevFreela.UnitTests", "DevFreela.UnitTests\DevFreela.UnitTests.csproj", "{46B081DB-5414-4668-A6E5-E8C5AED5E37D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DevFreela.UnitTests", "DevFreela.UnitTests\DevFreela.UnitTests.csproj", "{46B081DB-5414-4668-A6E5-E8C5AED5E37D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microsservicos", "Microsservicos", "{406E569B-D2CE-433E-8B3A-1FF191223215}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevFreela.Payments.API", "Microsservicos\DevFreela.Payments.API\DevFreela.Payments.API.csproj", "{C77527CE-A199-49CD-953C-D538D2F2E775}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,9 +43,16 @@ Global
 		{46B081DB-5414-4668-A6E5-E8C5AED5E37D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46B081DB-5414-4668-A6E5-E8C5AED5E37D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46B081DB-5414-4668-A6E5-E8C5AED5E37D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C77527CE-A199-49CD-953C-D538D2F2E775}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C77527CE-A199-49CD-953C-D538D2F2E775}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C77527CE-A199-49CD-953C-D538D2F2E775}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C77527CE-A199-49CD-953C-D538D2F2E775}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C77527CE-A199-49CD-953C-D538D2F2E775} = {406E569B-D2CE-433E-8B3A-1FF191223215}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3DC17D50-1219-43DD-9171-2986967C75E5}
