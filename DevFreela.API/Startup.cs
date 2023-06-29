@@ -4,6 +4,7 @@ using DevFreela.Application.Validator;
 using DevFreela.Core.Repositories;
 using DevFreela.Core.Services;
 using DevFreela.Infrastructure.Auth;
+using DevFreela.Infrastructure.MessageBus;
 using DevFreela.Infrastructure.Persistence;
 using DevFreela.Infrastructure.Persistence.Repositories;
 using FluentValidation.AspNetCore;
@@ -37,11 +38,10 @@ namespace DevFreela.API
             services.AddScoped<ISkillRepository, SkillRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IMessageBusService, MessageBusService>();
 
             services.AddScoped<DevFreelaDbContext>();
 
-            var connectionString = Configuration.GetConnectionString("DevFreelaCs");
-            //services.AddDbContext<DevFreelaDbContext>(options => options.UseSqlServer(connectionString));
             services.AddDbContextPool<DevFreelaDbContext>(
                     options => options.UseSqlServer(Configuration.GetConnectionString("DevFreelaCs")));
 
