@@ -34,17 +34,19 @@ namespace DevFreela.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IProjectRepository, ProjectRepository>();
-            services.AddScoped<ISkillRepository, SkillRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IAuthService, AuthService>();
-            services.AddScoped<IMessageBusService, MessageBusService>();
+            var sql = Configuration.GetConnectionString("DevFreelaCs");
+            services.AddDbContext<DevFreelaDbContext>(
+                    options => options.UseSqlServer(sql));
 
-            services.AddScoped<DevFreelaDbContext>();
+            services.AddTransient<IProjectRepository, ProjectRepository>();
+            services.AddTransient<ISkillRepository, SkillRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IMessageBusService, MessageBusService>();
 
-            services.AddDbContextPool<DevFreelaDbContext>(
-                    options => options.UseSqlServer(Configuration.GetConnectionString("DevFreelaCs")));
+            //services.AddSingleton<DevFreelaDbContext>();
 
+                     
             services.AddControllers(options => options.Filters.Add(typeof(ValidatorFilter)))
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateUserCommandValidator>());
 
