@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Connections;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Threading.Tasks;
-using System.Threading;
-using DevFreela.Payments.API.Models;
+﻿using DevFreela.Payments.API.Models;
 using DevFreela.Payments.API.Services;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using System;
+using System.Text;
+using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DevFreela.Payments.API.Consumers
 {
