@@ -9,6 +9,7 @@ namespace DevFreela.Infrastructure.Payments
     {
         private readonly IMessageBusService _messageBusService;
         private const string QUEUE_NAME = "Payments";
+
         public PaymentService(IMessageBusService messageBusService)
         {
             _messageBusService = messageBusService;
@@ -16,8 +17,10 @@ namespace DevFreela.Infrastructure.Payments
 
         public void ProcessPayment(PaymentInfoDTO paymentInfoDTO)
         {
+            //Transformei em JSON
             var paymentInfoJson = JsonSerializer.Serialize(paymentInfoDTO);
 
+            //Transformei em bytes
             var paymentInfoBytes = Encoding.UTF8.GetBytes(paymentInfoJson);
 
             _messageBusService.Publish(QUEUE_NAME, paymentInfoBytes);
