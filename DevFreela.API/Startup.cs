@@ -1,5 +1,6 @@
 using DevFreela.API.Filters;
 using DevFreela.Application.Commands.CreateProject;
+using DevFreela.Application.Consumers;
 using DevFreela.Application.Validator;
 using DevFreela.Core.Repositories;
 using DevFreela.Core.Services;
@@ -44,9 +45,8 @@ namespace DevFreela.API
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IMessageBusService, MessageBusService>();
 
-            //services.AddSingleton<DevFreelaDbContext>();
+            services.AddHostedService<PaymentApprovedConsumer>();
 
-                     
             services.AddControllers(options => options.Filters.Add(typeof(ValidatorFilter)))
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateUserCommandValidator>());
 
